@@ -1,0 +1,173 @@
+# AI Food Calorie Estimator - Food-101
+# Requirements File
+# Generated: 2025-06-29
+# Author: DevanshSrajput
+# Python >= 3.8 required
+
+# Core Dependencies
+# ================
+
+# Web Framework
+streamlit>=1.28.0
+
+# Machine Learning & Deep Learning
+tensorflow>=2.13.0
+scikit-learn>=1.3.0
+
+# Computer Vision
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# Data Processing & Analysis
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+plotly>=5.15.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Utilities
+requests>=2.31.0
+tqdm>=4.65.0
+PyYAML>=6.0
+psutil>=5.9.0
+
+# Configuration & Logging
+python-dotenv>=1.0.0
+
+# Image Processing Extensions
+imageio>=2.31.0
+scipy>=1.11.0
+
+# Data Serialization
+joblib>=1.3.0
+
+# Progress Bars & CLI
+click>=8.1.0
+
+# JSON Handling (improved)
+ujson>=5.8.0
+
+# Memory Optimization
+memory-profiler>=0.61.0
+
+# File Handling
+pathlib2>=2.3.7; python_version<"3.4"
+
+# Optional GPU Support (uncomment if using GPU)
+# tensorflow-gpu>=2.13.0
+
+# Development Dependencies (optional)
+# ===================================
+# Uncomment for development environment
+
+# Testing
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
+# pytest-mock>=3.11.0
+
+# Code Quality
+# black>=23.7.0
+# flake8>=6.0.0
+# mypy>=1.5.0
+# isort>=5.12.0
+
+# Development Tools
+# pre-commit>=3.3.0
+# jupyterlab>=4.0.0
+# notebook>=7.0.0
+# ipywidgets>=8.1.0
+
+# Documentation
+# sphinx>=7.1.0
+# sphinx-rtd-theme>=1.3.0
+
+# Platform-specific Dependencies
+# ==============================
+
+# macOS Metal Performance (for Apple Silicon)
+# tensorflow-metal>=1.0.0; platform_system=="Darwin" and platform_machine=="arm64"
+
+# Linux TensorRT Optimization
+# tensorrt>=8.6.0; platform_system=="Linux"
+
+# Windows DirectML (experimental)
+# tensorflow-directml>=1.15.8; platform_system=="Windows"
+
+# Export & Deployment (optional)
+# ===============================
+
+# Model Export
+# tensorflowjs>=4.10.0
+# tensorflow-lite-runtime>=2.13.0
+# onnx>=1.15.0
+# tf2onnx>=1.16.0
+
+# Web Deployment
+# gunicorn>=21.2.0
+# uvicorn>=0.23.0
+# fastapi>=0.103.0
+
+# Cloud Integration
+# boto3>=1.34.0  # AWS
+# google-cloud-storage>=2.10.0  # GCP
+# azure-storage-blob>=12.19.0  # Azure
+
+# Database Support (if needed)
+# =============================
+# sqlite3 (built-in with Python)
+# pymongo>=4.5.0  # MongoDB
+# redis>=5.0.0  # Redis cache
+
+# Additional Utilities
+# ====================
+
+# Date/Time handling
+python-dateutil>=2.8.0
+
+# Environment management
+python-decouple>=3.8
+
+# Encryption/Security
+cryptography>=41.0.0
+
+# HTTP client improvements
+httpx>=0.25.0
+
+# Async support
+asyncio>=3.4.3; python_version<"3.7"
+aiofiles>=23.2.0
+
+# Version Information
+# ===================
+# Core package versions tested and verified:
+# - Python: 3.8+
+# - TensorFlow: 2.13.0+
+# - Streamlit: 1.28.0+
+# - OpenCV: 4.8.0+
+# - NumPy: 1.24.0+
+# - Pandas: 2.0.0+
+
+# Installation Notes
+# ==================
+# 1. Install with: pip install -r requirements.txt
+# 2. For GPU support: pip install tensorflow-gpu>=2.13.0
+# 3. For development: uncomment dev dependencies above
+# 4. For production: consider using pip-tools for pinned versions
+# 5. Virtual environment recommended: python -m venv venv
+
+# Troubleshooting
+# ===============
+# - If TensorFlow installation fails, try: pip install --upgrade pip setuptools
+# - For M1/M2 Macs: use conda or pip install tensorflow-macos tensorflow-metal
+# - For older GPUs: check CUDA compatibility with TensorFlow version
+# - Memory issues: consider using tensorflow-lite for inference only
+
+# Package Size Information
+# ========================
+# Estimated total download size: ~2.5GB
+# - TensorFlow: ~500MB
+# - OpenCV: ~60MB  
+# - Other packages: ~100MB
+# - Model weights (when downloaded): ~1.5GB+

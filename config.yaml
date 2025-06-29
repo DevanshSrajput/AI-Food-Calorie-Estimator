@@ -1,0 +1,391 @@
+# AI Food Calorie Estimator - Food-101 Configuration
+# Version: 2.0.0
+# Created: 2025-06-29 09:23:21
+# Author: DevanshSrajput
+
+# Application configuration
+app:
+  title: "AI Food Calorie Estimator - Food-101"
+  version: "2.0.0"
+  author: "DevanshSrajput"
+  description: "Professional food recognition and nutrition tracking system"
+  created_date: "2025-06-29"
+  last_updated: "2025-06-29 09:23:21"
+  
+  # UI settings
+  ui:
+    theme: "default"
+    primary_color: "#2E8B57"
+    secondary_color: "#4ECDC4"
+    background_color: "#FFFFFF"
+    text_color: "#262730"
+    page_icon: "🍎"
+    layout: "wide"
+    sidebar_state: "expanded"
+    
+  # Feature flags
+  features:
+    enable_training: true
+    enable_meal_tracking: true
+    enable_analytics: true
+    enable_data_export: true
+    enable_model_comparison: false  # Coming soon
+    enable_real_time_camera: false  # Coming soon
+    enable_multi_food_detection: false  # Coming soon
+
+# Model configuration
+model:
+  # Default model settings
+  default_model: "EfficientNetB0"
+  input_size: [224, 224]
+  batch_size: 32
+  num_classes: 101
+  
+  # Supported model architectures
+  supported_architectures:
+    - "EfficientNetB0"
+    - "EfficientNetB1"
+    - "EfficientNetB2"
+    - "MobileNetV2"
+    - "ResNet50"
+    - "ResNet101"
+    - "InceptionV3"
+    - "DenseNet121"
+    - "VGG16"
+  
+  # Model paths
+  paths:
+    models_dir: "models"
+    checkpoints_dir: "models/checkpoints"
+    exports_dir: "exports"
+    pretrained_dir: "models/pretrained"
+  
+  # Performance settings
+  performance:
+    use_mixed_precision: false
+    enable_xla: false
+    optimize_for_inference: true
+    max_batch_size: 64
+
+# Training configuration
+training:
+  # Default training parameters
+  default_epochs: 30
+  default_batch_size: 32
+  default_learning_rate: 0.001
+  validation_split: 0.2
+  early_stopping_patience: 10
+  
+  # Advanced training settings
+  advanced:
+    lr_reduction_patience: 5
+    lr_reduction_factor: 0.3
+    min_learning_rate: 0.0000001
+    max_lr_search: false
+    cosine_annealing: false
+    warmup_epochs: 0
+  
+  # Data augmentation
+  augmentation:
+    rotation_range: 30.0
+    width_shift_range: 0.3
+    height_shift_range: 0.3
+    horizontal_flip: true
+    zoom_range: 0.3
+    shear_range: 0.2
+    brightness_range: [0.7, 1.3]
+    channel_shift_range: 0.2
+    fill_mode: "nearest"
+  
+  # Fine-tuning configuration
+  fine_tuning:
+    enabled: true
+    unfreeze_at_layer: 100
+    fine_tune_learning_rate: 0.0001
+    fine_tune_epochs: 10
+    gradual_unfreezing: false
+  
+  # Callbacks
+  callbacks:
+    early_stopping: true
+    model_checkpoint: true
+    reduce_lr_on_plateau: true
+    tensorboard: true
+    csv_logger: true
+    
+  # Training presets
+  presets:
+    quick:
+      name: "⚡ Quick Training"
+      epochs: 15
+      batch_size: 32
+      learning_rate: 0.001
+      model_type: "MobileNetV2"
+      estimated_time: "15-20 minutes"
+      
+    balanced:
+      name: "⚖️ Balanced Training"
+      epochs: 30
+      batch_size: 16
+      learning_rate: 0.0001
+      model_type: "EfficientNetB0"
+      estimated_time: "45-60 minutes"
+      
+    high_accuracy:
+      name: "🎯 High Accuracy"
+      epochs: 50
+      batch_size: 8
+      learning_rate: 0.00001
+      model_type: "EfficientNetB1"
+      estimated_time: "2-3 hours"
+
+# Dataset configuration
+dataset:
+  # Food-101 dataset settings
+  food101:
+    url: "http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz"
+    size_gb: 5.0
+    num_classes: 101
+    total_images: 101000
+    train_images: 75750
+    test_images: 25250
+    
+  # Dataset paths
+  paths:
+    raw_data_dir: "food-101"
+    organized_data_dir: "organized_food101"
+    downloads_dir: "downloads"
+    cache_dir: "data/cache"
+  
+  # Data processing
+  processing:
+    image_formats: ["jpg", "jpeg", "png"]
+    max_image_size_mb: 10
+    resize_images: false
+    target_size: [224, 224]
+    validation_split: 0.2
+    test_split: 0.15
+    
+  # Quality checks
+  quality:
+    min_images_per_class: 50
+    max_images_per_class: 10000
+    check_corrupted_images: true
+    remove_duplicates: false
+
+# Nutrition database configuration
+nutrition:
+  # Database settings
+  database:
+    file_path: "data/food101_calories.csv"
+    backup_path: "data/backups"
+    auto_backup: true
+    
+  # Nutritional information fields
+  fields:
+    required: ["food_name", "calories_per_100g", "protein", "carbs", "fats"]
+    optional: ["fiber", "sodium", "sugar", "calcium", "iron", "vitamin_c"]
+    
+  # Default nutritional goals (per day)
+  daily_goals:
+    calories: 2000
+    protein: 150  # grams
+    carbs: 250    # grams
+    fats: 65      # grams
+    fiber: 25     # grams
+    sodium: 2300  # mg
+    
+  # Portion size settings
+  portions:
+    default_size: 100  # grams
+    min_size: 25
+    max_size: 500
+    step_size: 25
+
+# Analytics and tracking
+analytics:
+  # Meal tracking
+  meal_tracking:
+    enabled: true
+    auto_save: true
+    backup_frequency: "daily"
+    retention_days: 365
+    
+  # Data export
+  export:
+    formats: ["csv", "json", "xlsx"]
+    include_charts: true
+    include_metadata: true
+    
+  # Visualization settings
+  visualization:
+    default_chart_type: "plotly"
+    color_scheme: "viridis"
+    show_trends: true
+    animated_charts: false
+
+# Logging configuration
+logging:
+  # Log levels
+  level: "INFO"
+  console_level: "INFO"
+  file_level: "DEBUG"
+  
+  # Log files
+  files:
+    app_log: "logs/app.log"
+    training_log: "logs/training.log"
+    error_log: "logs/error.log"
+    
+  # Log rotation
+  rotation:
+    max_size_mb: 100
+    backup_count: 5
+    
+  # Log format
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# System configuration
+system:
+  # Performance settings
+  performance:
+    max_workers: 4
+    memory_limit_gb: 8
+    cache_size_mb: 512
+    
+  # File handling
+  files:
+    max_upload_size_mb: 200
+    allowed_extensions: ["jpg", "jpeg", "png", "bmp", "tiff"]
+    temp_dir: "temp"
+    cleanup_temp_files: true
+    
+  # Security settings
+  security:
+    enable_csrf_protection: false
+    max_request_size_mb: 200
+    session_timeout_minutes: 60
+
+# API configuration (for future use)
+api:
+  # API settings
+  enabled: false
+  host: "localhost"
+  port: 8000
+  debug: false
+  
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    
+  # Authentication
+  authentication:
+    enabled: false
+    method: "token"
+    
+  # CORS settings
+  cors:
+    enabled: true
+    origins: ["*"]
+
+# Development settings
+development:
+  # Debug settings
+  debug_mode: false
+  verbose_logging: false
+  enable_profiling: false
+  
+  # Testing
+  testing:
+    test_data_dir: "tests/data"
+    mock_predictions: false
+    skip_model_loading: false
+    
+  # Development tools
+  tools:
+    auto_reload: true
+    show_warnings: true
+    validate_config: true
+
+# User preferences (can be customized)
+user:
+  # Default user settings
+  username: "DevanshSrajput"
+  timezone: "UTC"
+  date_format: "%Y-%m-%d"
+  time_format: "%H:%M:%S"
+  
+  # Interface preferences
+  interface:
+    show_tooltips: true
+    auto_refresh: false
+    compact_mode: false
+    show_advanced_options: false
+    
+  # Notification settings
+  notifications:
+    training_complete: true
+    model_saved: true
+    data_exported: true
+    errors: true
+
+# External integrations (for future use)
+integrations:
+  # Cloud storage
+  cloud_storage:
+    enabled: false
+    provider: "none"  # aws, gcp, azure
+    
+  # Fitness apps
+  fitness_apps:
+    enabled: false
+    sync_meal_data: false
+    
+  # Nutrition APIs
+  nutrition_apis:
+    enabled: false
+    primary_api: "none"
+    fallback_api: "none"
+
+# Backup and recovery
+backup:
+  # Automatic backups
+  auto_backup:
+    enabled: true
+    frequency: "daily"
+    retention_days: 30
+    
+  # Backup locations
+  locations:
+    local: "backups"
+    cloud: null
+    
+  # What to backup
+  include:
+    models: true
+    data: true
+    config: true
+    logs: false
+
+# Metadata
+metadata:
+  config_version: "2.0.0"
+  created_by: "DevanshSrajput"
+  created_at: "2025-06-29 09:23:21"
+  last_modified_by: "DevanshSrajput"
+  last_modified_at: "2025-06-29 09:23:21"
+  description: "Comprehensive configuration for AI Food Calorie Estimator"
+  
+  # Version compatibility
+  compatibility:
+    min_app_version: "2.0.0"
+    max_app_version: "2.9.9"
+    
+  # Configuration schema
+  schema_version: "1.0"
+  validation_rules:
+    strict_mode: false
+    allow_unknown_keys: true
+    validate_types: true
